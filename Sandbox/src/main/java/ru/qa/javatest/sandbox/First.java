@@ -4,17 +4,25 @@ public class First {
 
    public static void main(String[] args) {
       hello("God");
-      double x = 13;
-      double y = 1;
-      System.out.println("Площадь прямоугольника = " + x + " и " + y + " = " + area(x,y));
+
+      Square s = new Square(5);
+      System.out.println("Площадь квадрата со стороной " + s.l + " = " + area(s));
+
+      Rectangle r = new Rectangle(3,7);
+      System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + area(r));
+
    }
 
    public static void hello(String a) {
       System.out.println("Hello, World! I am " + a + "!");
    }
 
-   public static Double area(Double x, Double y) {
-      return x * y;
+   public static Double area(Square s) {
+      return s.l * s.l;
+   }
+
+   public static Double area(Rectangle r) {
+      return r.a * r.b;
    }
 
 }
