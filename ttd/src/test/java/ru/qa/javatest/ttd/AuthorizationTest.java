@@ -22,16 +22,16 @@ public class AuthorizationTest {
   @Test
   public void testUntitled() throws Exception {
     openSite();
-    login();
+    login("dgrebenyuk+0044@b2broker.com", "123456As");
   }
 
-  private void login() {
+  private void login(String username, String password) {
     driver.findElement(By.id("mat-input-0")).click();
     driver.findElement(By.id("mat-input-0")).clear();
-    driver.findElement(By.id("mat-input-0")).sendKeys("dgrebenyuk+0044@b2broker.com");
+    driver.findElement(By.id("mat-input-0")).sendKeys(username);
     driver.findElement(By.id("mat-input-1")).click();
     driver.findElement(By.id("mat-input-1")).clear();
-    driver.findElement(By.id("mat-input-1")).sendKeys("123456As");
+    driver.findElement(By.id("mat-input-1")).sendKeys(password);
     driver.findElement(By.xpath("//button[@type='submit']")).click();
   }
 
