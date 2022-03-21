@@ -20,8 +20,12 @@ public class AuthorizationTest {
   }
 
   @Test
-  public void testUntitledTestCase() throws Exception {
-    driver.get("https://stand-qa-07-my.b2broker.tech/en/login");
+  public void testUntitled() throws Exception {
+    openSite();
+    login();
+  }
+
+  private void login() {
     driver.findElement(By.id("mat-input-0")).click();
     driver.findElement(By.id("mat-input-0")).clear();
     driver.findElement(By.id("mat-input-0")).sendKeys("dgrebenyuk+0044@b2broker.com");
@@ -29,6 +33,10 @@ public class AuthorizationTest {
     driver.findElement(By.id("mat-input-1")).clear();
     driver.findElement(By.id("mat-input-1")).sendKeys("123456As");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
+  }
+
+  private void openSite() {
+    driver.get("https://stand-qa-07-my.b2broker.tech/en/login");
   }
 
   @AfterClass(alwaysRun = true)
