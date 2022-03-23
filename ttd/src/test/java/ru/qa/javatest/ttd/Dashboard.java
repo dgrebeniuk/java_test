@@ -1,12 +1,14 @@
 package ru.qa.javatest.ttd;
 
+import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
-public class AuthorizationTest extends TestMain {
+public class Dashboard {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -20,23 +22,16 @@ public class AuthorizationTest extends TestMain {
   }
 
   @Test
-  public void testUntitled() throws Exception {
-    openSite();
-    login("dgrebenyuk+0044@b2broker.com", "123456As");
-  }
-
-  private void login(String username, String password) {
+  public void testDashboard() throws Exception {
+    driver.get("https://stand-qa-07-my.b2broker.tech/en/login");
     driver.findElement(By.id("mat-input-0")).click();
     driver.findElement(By.id("mat-input-0")).clear();
-    driver.findElement(By.id("mat-input-0")).sendKeys(username);
-    driver.findElement(By.id("mat-input-1")).click();
+    driver.findElement(By.id("mat-input-0")).sendKeys("dgrebenyuk+0044@b2broker.com");
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::div[8]")).click();
     driver.findElement(By.id("mat-input-1")).clear();
-    driver.findElement(By.id("mat-input-1")).sendKeys(password);
+    driver.findElement(By.id("mat-input-1")).sendKeys("123456As");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-  }
-
-  private void openSite() {
-    driver.get("https://stand-qa-07-my.b2broker.tech/en/login");
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::span[2]")).click();
   }
 
   @AfterClass(alwaysRun = true)
