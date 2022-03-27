@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class Dashboard {
+public class Language {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -22,16 +22,22 @@ public class Dashboard {
   }
 
   @Test
-  public void testDashboard() throws Exception {
+  public void testLanguage() throws Exception {
+    openSite();
+    clickLang();
+    choiseLang();
+  }
+
+  private void choiseLang() {
+    driver.findElement(By.xpath("//mat-option[@id='mat-option-1']/span/div/div")).click();
+  }
+
+  private void clickLang() {
+    driver.findElement(By.xpath("//div[@id='mat-select-value-1']/span/span")).click();
+  }
+
+  private void openSite() {
     driver.get("https://stand-qa-07-my.b2broker.tech/en/login");
-    driver.findElement(By.id("mat-input-0")).click();
-    driver.findElement(By.id("mat-input-0")).clear();
-    driver.findElement(By.id("mat-input-0")).sendKeys("dgrebenyuk+0044@b2broker.com");
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::div[8]")).click();
-    driver.findElement(By.id("mat-input-1")).clear();
-    driver.findElement(By.id("mat-input-1")).sendKeys("123456As");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::span[2]")).click();
   }
 
   @AfterClass(alwaysRun = true)
