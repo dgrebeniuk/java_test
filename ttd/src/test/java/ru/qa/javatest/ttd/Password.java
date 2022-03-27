@@ -27,13 +27,13 @@ public class Password {
   public void testPassword() throws Exception {
     openSite();
     clickForgot();
-    mail();
+    mail("dgrebenyuk+0044@b2broker.com");
   }
 
-  private void mail() {
+  private void mail(String mail) {
     driver.findElement(By.id("mat-input-2")).click();
     driver.findElement(By.id("mat-input-2")).clear();
-    driver.findElement(By.id("mat-input-2")).sendKeys("gdimkq@gmail.com");
+    driver.findElement(By.id("mat-input-2")).sendKeys(mail);
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Email'])[1]/following::span[3]")).click();
   }
 
